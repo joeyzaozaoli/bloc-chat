@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+}
+
+div.index {
+    font-size: 1.5rem;
+    padding: 2.0rem 0 0 2.0rem;
+    width: 200px;
+    height: 100%;
+    background-color: beige;
+}
+
+div.index a {
+    text-decoration: none;
+}
