@@ -36,14 +36,12 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="modalChild.addRoom({{userInput}});">Create</button>
-                    <p>{{userInput}}</p>
+                    <button class="btn btn-primary" ng-click="modalChild.addRoom(userInput);">Create</button>
                     <button class="btn btn-warning" ng-click="modalChild.cancel()">Cancel</button>
                 </div>
             </script>
             
             <button class="btn btn-default" ng-click="modalParent.open()">New Room</button>
-            <p>{{userInput}}</p>
         </div>
     </div>
     
