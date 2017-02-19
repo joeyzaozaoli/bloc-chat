@@ -1,10 +1,10 @@
 (function() {
-     function ModalCtrl($uibModal, Room) {
+     function ModalCtrl($uibModal) {
         this.open = function(){
             $uibModal.open({
                 templateUrl: 'theModal.html',
                 controller: function($uibModalInstance, Room){
-                    this.ok = function () {
+                    this.create = function () {
                         $uibModalInstance.close();
                     };
                     this.cancel = function () {

@@ -7,24 +7,18 @@
     <!-- libraries -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     
-    <!-- internal scripts -->
-    <link rel="stylesheet" href="/styles/normalize.css">
+    <!-- internal -->
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <!-- internal scripts -->
-    <div class="index">
-        <a>Bloc Chat</a>
-        
-        <!-- Home Controller -->
-        <div ng-controller="HomeCtrl as home">
-            <div class="home" ng-repeat="room in home.rooms">
-                <li>{{room.$value}}</li>
-            </div>
-        </div>
+    <div class="container">
+        <h3>Bloc Chat</h3>
         
         <!-- Modal Controller -->
         <div ng-controller="ModalCtrl as modalParent">
+            <button class="btn btn-primary top-btn" ng-click="modalParent.open()">New Room</button>
+            <div class="empty-div"></div>
+            
             <script type="text/ng-template" id="theModal.html">
                 <div class="modal-header">
                     <h4 class="modal-title">Create New Room</h4>
@@ -36,12 +30,17 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="modalChild.addRoom(userInput);">Create</button>
+                    <button class="btn btn-primary" ng-click="modalChild.addRoom(userInput); modalChild.create()">Create</button>
                     <button class="btn btn-warning" ng-click="modalChild.cancel()">Cancel</button>
                 </div>
             </script>
-            
-            <button class="btn btn-default" ng-click="modalParent.open()">New Room</button>
+        </div>
+        
+        <!-- Home Controller -->
+        <div ng-controller="HomeCtrl as home">
+            <div ng-repeat="room in home.rooms">
+                <h4><li>{{room.$value}}</li></h4>
+            </div>
         </div>
     </div>
     
@@ -49,6 +48,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script>
@@ -62,7 +62,7 @@
     firebase.initializeApp(config);
     </script>
     
-    <!-- internal scripts -->
+    <!-- internal -->
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/HomeCtrl.js"></script>
     <script src="/scripts/controllers/ModalCtrl.js"></script>
