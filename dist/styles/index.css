@@ -3,13 +3,19 @@ html, body {
 }
 
 div.index {
-    font-size: 1.5rem;
-    padding: 2.0rem 0 0 2.0rem;
-    width: 200px;
+    padding: 2rem 0 0 2rem;
+    width: 275px;
     height: 100%;
     background-color: beige;
 }
 
 div.index a {
+    font-size: 1.5rem;
     text-decoration: none;
+}
+
+.home li {
+    font-size: 1.0rem;
+    list-style-type: none;
+    padding: 1.0rem 0 0 0;
 }

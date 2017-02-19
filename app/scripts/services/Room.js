@@ -1,11 +1,16 @@
 (function() {
   function Room($firebaseArray) {
+    var Room = {};
+      
     var ref = firebase.database().ref().child("rooms");
     var rooms = $firebaseArray(ref);
-    
-    return {
-      all: rooms
-    };
+      
+    Room.addRoom = function(){
+        rooms.$add({$value:"Room " + (rooms.length+1)});
+    }
+    Room.all = rooms;
+      
+    return Room;
   }
 
   angular
