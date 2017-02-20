@@ -41,6 +41,10 @@
             <div ng-repeat="room in home.rooms">
                 <h4><li>{{room.$value}}</li></h4>
             </div>
+            
+            <!-- Problem: When the button is clicked, p tags don't update accordingly. -->
+            <button ng-click="home.setCurrentRoomId('-KdMgd87CnPob6kUFgUh')">click to Update Factory</button>
+            <p>{{home.messages}}</p>
         </div>
     </div>
     
@@ -67,5 +71,6 @@
     <script src="/scripts/controllers/HomeCtrl.js"></script>
     <script src="/scripts/controllers/ModalCtrl.js"></script>
     <script src="/scripts/services/Room.js"></script>
+    <script src="/scripts/services/Message.js"></script>
 </body>
 </html>
