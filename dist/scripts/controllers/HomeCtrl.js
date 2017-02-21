@@ -1,8 +1,12 @@
 (function() {
      function HomeCtrl(Room, Message) {
          this.rooms = Room.all;
-         this.setCurrentRoomId = Message.setCurrentRoomId;
-         this.messages = Message.messages;
+         this.currentRoom = null;
+         this.currentMessages = null;
+         this.setCurrentRoom = function(room) {
+             this.currentRoom = room;
+             this.currentMessages = Message.getByRoomId(room.$id);
+         };
      }
  
      angular

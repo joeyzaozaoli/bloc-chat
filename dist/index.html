@@ -11,13 +11,10 @@
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <div class="container">
-        <h3>Bloc Chat</h3>
-        
         <!-- Modal Controller -->
-        <div ng-controller="ModalCtrl as modalParent">
-            <button class="btn btn-primary top-btn" ng-click="modalParent.open()">New Room</button>
-            <div class="empty-div"></div>
+        <div class="container logo-n-new" ng-controller="ModalCtrl as modalParent">
+            <h3 class="logo">Bloc Chat</h3>
+            <button class="btn btn-primary new" ng-click="modalParent.open()">New Room</button>
             
             <script type="text/ng-template" id="theModal.html">
                 <div class="modal-header">
@@ -36,17 +33,20 @@
             </script>
         </div>
         
+        <div class="empty-div"></div>
+    
         <!-- Home Controller -->
-        <div ng-controller="HomeCtrl as home">
-            <div ng-repeat="room in home.rooms">
-                <h4><li>{{room.$value}}</li></h4>
+        <div class="container rooms-n-chatroom" ng-controller="HomeCtrl as home">
+            <div class="rooms">
+                <h4 ng-repeat="room in home.rooms" ng-click="home.setCurrentRoom(room)">{{room.$value}}</h4>
             </div>
-            
-            <!-- Problem: When the button is clicked, p tags don't update accordingly. -->
-            <button ng-click="home.setCurrentRoomId('-KdMgd87CnPob6kUFgUh')">click to Update Factory</button>
-            <p>{{home.messages}}</p>
+            <h4>{{home.currentRoom.$value}}</h4>
+            <div class="chatroom" ng-repeat="message in home.currentMessages">
+                <p class="username">{{message.username}}</p>
+                <p class="content">{{message.content}}</p>
+                <p class="sentAt">{{message.sentAt}}</p>
+            </div>
         </div>
-    </div>
     
     <!-- libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
