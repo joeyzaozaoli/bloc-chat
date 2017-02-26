@@ -11,48 +11,65 @@
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-        <!-- Modal Controller -->
-        <div class="container logo-n-new" ng-controller="ModalCtrl as modalParent">
-            <h3 class="logo">Bloc Chat</h3>
-            <button class="btn btn-primary new" ng-click="modalParent.open()">New Room</button>
+    <!-- NewRoomCtrl -->
+    <div class="container logo-n-new" ng-controller="NewRoomCtrl as roomParent">
+        <h3 class="logo">Bloc Chat</h3>
+        <button class="btn btn-primary new" ng-click="roomParent.open()">New Room</button>
             
-            <script type="text/ng-template" id="theModal.html">
-                <div class="modal-header">
-                    <h4 class="modal-title">Create New Room</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <label>Enter Room Name</label>
-                        <input type="text" class="form-control" ng-model="userInput">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="modalChild.addRoom(userInput); modalChild.create()">Create</button>
-                    <button class="btn btn-warning" ng-click="modalChild.cancel()">Cancel</button>
-                </div>
-            </script>
-        </div>
+        <script type="text/ng-template" id="newRoomModal.html">
+            <div class="modal-header">
+                <h4 class="modal-title">Create New Room</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label>Enter Room Name</label>
+                    <input type="text" class="form-control" ng-model="roomName">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="roomChild.addRoom(roomName); roomChild.create()">Create</button>
+                <button class="btn btn-warning" ng-click="roomChild.cancel()">Cancel</button>
+            </div>
+        </script>
+    </div>
         
-        <div class="empty-div"></div>
+    <div class="empty-div"></div>
     
-        <!-- Home Controller -->
-        <div class="container rooms-n-chatroom" ng-controller="HomeCtrl as home">
-            <div class="rooms">
-                <h4 ng-repeat="room in home.rooms" ng-click="home.setCurrentRoom(room)">{{room.$value}}</h4>
-            </div>
-            <h4>{{home.currentRoom.$value}}</h4>
-            <div class="chatroom" ng-repeat="message in home.currentMessages">
-                <p class="username">{{message.username}}</p>
-                <p class="content">{{message.content}}</p>
-                <p class="sentAt">{{message.sentAt}}</p>
-            </div>
+    <!-- HomeContrl -->
+    <div class="container rooms-n-chatroom" ng-controller="HomeCtrl as home">
+        <div class="rooms">
+            <h4 ng-repeat="room in home.rooms" ng-click="home.setCurrentRoom(room)">{{room.$value}}</h4>
         </div>
+        <h4>{{home.currentRoom.$value}}</h4>
+        <div class="chatroom" ng-repeat="message in home.currentMessages">
+            <p class="username">{{message.username}}</p>
+            <p class="content">{{message.content}}</p>
+            <p class="sentAt">{{message.sentAt}}</p>
+        </div>
+    </div>
+    
+    <!-- NewUserContrl -->
+    <script type="text/ng-template" id="newUserModal.html">
+        <div class="modal-header">
+            <h4 class="modal-title">Create User Account</h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <label>Set User Name</label>
+                <input type="text" class="form-control" ng-model="userName">
+            </form>
+        </div>
+        <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="userChild.create(userName)">Create</button>
+        </div>
+    </script>
     
     <!-- libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script>
@@ -69,7 +86,8 @@
     <!-- internal -->
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/HomeCtrl.js"></script>
-    <script src="/scripts/controllers/ModalCtrl.js"></script>
+    <script src="/scripts/controllers/NewRoomCtrl.js"></script>
+    <script src="/scripts/controllers/NewUserCtrl.js"></script>
     <script src="/scripts/services/Room.js"></script>
     <script src="/scripts/services/Message.js"></script>
 </body>
