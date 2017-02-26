@@ -1,3 +1,5 @@
+/* *:not(html):not(body) {border: 1px dashed #0000FF;} */
+
 /* position elements */
 
 html, 
@@ -37,6 +39,12 @@ body {
     padding-left: 20px;
 }
 
+.newmsg {
+    position: absolute;
+    bottom: 15px;
+    margin-left: 21%;
+}
+
 .content, 
 .sentAt {
     display: inline-block;
@@ -58,6 +66,10 @@ body {
 
 .chatroom {
     padding: 10px 30px 10px 0;
+}
+
+.newmsg input {
+    width: 1000px;
 }
 
 .username {

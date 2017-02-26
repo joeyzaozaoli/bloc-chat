@@ -7,6 +7,7 @@
              this.currentRoom = room;
              this.currentMessages = Message.getByRoomId(room.$id);
          };
+         this.sendMessage = Message.send;
      }
  
      angular

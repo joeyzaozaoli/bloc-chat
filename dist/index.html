@@ -46,6 +46,10 @@
             <p class="content">{{message.content}}</p>
             <p class="sentAt">{{message.sentAt}}</p>
         </div>
+        <div class="newmsg">
+            <input type="text" placeholder="Type Message" ng-model="msg">
+            <button class="btn btn-primary" ng-click="home.sendMessage(msg, home.currentRoom.$id)">Send</button>
+        </div>
     </div>
     
     <!-- NewUserContrl -->
