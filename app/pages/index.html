@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- NewRoomCtrl -->
-    <div class="container logo-n-new" ng-controller="NewRoomCtrl as roomParent">
+    <section class="logo-n-new" ng-controller="NewRoomCtrl as roomParent">
         <h3 class="logo">Bloc Chat</h3>
         <button class="btn btn-primary new" ng-click="roomParent.open()">New Room</button>
             
@@ -31,26 +31,26 @@
                 <button class="btn btn-warning" ng-click="roomChild.cancel()">Cancel</button>
             </div>
         </script>
-    </div>
-        
-    <div class="empty-div"></div>
+    </section>
     
     <!-- HomeContrl -->
-    <div class="container rooms-n-chatroom" ng-controller="HomeCtrl as home">
-        <div class="rooms">
+    <section class="rooms-n-chatroom" ng-controller="HomeCtrl as home">
+        <section class="rooms">
             <h4 ng-repeat="room in home.rooms" ng-click="home.setCurrentRoom(room)">{{room.$value}}</h4>
-        </div>
-        <h4>{{home.currentRoom.$value}}</h4>
-        <div class="chatroom" ng-repeat="message in home.currentMessages">
-            <p class="username">{{message.username}}</p>
-            <p class="content">{{message.content}}</p>
-            <p class="sentAt">{{message.sentAt}}</p>
-        </div>
-        <div class="newmsg">
-            <input type="text" placeholder="Type Message" ng-model="msg">
-            <button class="btn btn-primary" ng-click="home.sendMessage(msg, home.currentRoom.$id)">Send</button>
-        </div>
-    </div>
+        </section>
+        <section class="chatroom">
+            <h3>{{home.currentRoom.$value}}</h3>
+            <article ng-repeat="message in home.currentMessages">
+                <p class="username">{{message.username}}</p>
+                <p class="content">{{message.content}}</p>
+                <p class="sentAt">{{message.sentAt}}</p>
+            </article>
+            <article class="newmsg">
+                <input type="text" placeholder="Type Message" ng-model="msg">
+                <button class="btn btn-primary" ng-click="home.sendMessage(msg, home.currentRoom.$id)">Send</button>
+            </article>
+        </section>
+    </section>
     
     <!-- NewUserContrl -->
     <script type="text/ng-template" id="newUserModal.html">
